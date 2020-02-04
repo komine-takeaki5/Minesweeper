@@ -7,7 +7,8 @@ import com.xwray.groupie.databinding.BindableItem
 import androidx.databinding.BindingAdapter
 
 
-class ListItem(val box1: Box, val box2: Box, val box3: Box) : BindableItem<ItemListBinding>() {
+class ListItem(val box1: Box, val box2: Box, val box3: Box, val lister :TapListener) : BindableItem<ItemListBinding>() {
+
     override fun getLayout(): Int = R.layout.item_list
 
     override fun bind(viewBinding: ItemListBinding, position: Int) {
@@ -19,38 +20,36 @@ class ListItem(val box1: Box, val box2: Box, val box3: Box) : BindableItem<ItemL
 
         viewBinding.frameLayout.setOnClickListener {
             if (box1.hasBom){
-                Log.e("TAG","GAME OVER")
+               viewBinding.imageView.setImageResource(R.drawable.bom_image)
+                lister.gameOver()
             }else{
                 viewBinding.textView.text = box1.number.toString()
             }
+            lister.onTapped()
         }
         viewBinding.frameLayout2.setOnClickListener {
             if (box2.hasBom) {
-                Log.e("TAG","GAME OVER")
+                viewBinding.imageView2.setImageResource(R.drawable.bom_image)
+                lister.gameOver()
             } else {
                 viewBinding.textView2.text = box2.number.toString()
             }
+            lister.onTapped()
         }
         viewBinding.frameLayout3.setOnClickListener {
             if (box3.hasBom) {
-                Log.e("TAG","GAME OVER")
+                viewBinding.imageView3.setImageResource(R.drawable.bom_image)
+                lister.gameOver()
             } else {
                 viewBinding.textView3.text = box3.number.toString()
             }
+            lister.onTapped()
         }
-
-
-
-
-        //TODO; box2,box3実装
-
-
     }
 
 
 }
-
-//@BindingAdapter("app:srcCompat")
-//fun bindSrcCompat(view: ImageView, resourceId: Int) {
-//    view.setImageResource(resourceId)
-//}
+ interface TapListener{
+     fun onTapped()
+     fun gameOver()
+ }
