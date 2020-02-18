@@ -13,7 +13,7 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity(), ListItem.TapListener {
 
 
-    val ROW_NUMBER = 6
+    val ROW_NUMBER = 3
     var bomNumber = 0
     var tappedNumber = 1
     var boxArray = mutableListOf<MutableList<Box>>()
