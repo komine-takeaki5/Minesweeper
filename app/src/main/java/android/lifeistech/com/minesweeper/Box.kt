@@ -1,3 +1,9 @@
 package android.lifeistech.com.minesweeper
 
-data class Box(val isTapped :Boolean,var number:Int,val hasBom :Boolean)
+data class Box(var isTapped :Boolean,var number:Int,var hasBom :Boolean){
+
+
+    override fun toString(): String {
+        return hasBom.toString()
+    }
+}
