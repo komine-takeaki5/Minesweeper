@@ -5,29 +5,27 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".GameOver">
-
-    <TextView
-            android:text="GameOver"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView4"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="75dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:gravity="center"
-            app:layout_constraintVertical_bias="0.365"/>
+        tools:context=".HomeActivity">
     <Button
-            android:text="トップに戻る"
+            android:text="Start"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:id="@+id/start"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/back" app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintVertical_bias="0.732"
-            android:onClick="back"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintVertical_bias="0.736" android:textSize="30dp" android:textColor="#9C27B0"
+            android:onClick="start"/>
+    <TextView
+            android:text="Minesweeper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView7" android:textSize="60dp"
+            android:textColor="#00BCD4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintVertical_bias="0.389"
+            app:layout_constraintHorizontal_bias="0.692"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
