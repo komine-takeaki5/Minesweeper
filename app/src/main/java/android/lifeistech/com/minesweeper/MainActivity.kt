@@ -26,10 +26,10 @@ class MainActivity : AppCompatActivity(), ListItem.TapListener {
 
         findViewById<RecyclerView>(R.id.recycler_view).adapter = groupAdapter
 
-        //boxArry作成
-        for (i in 0..ROW_NUMBER - 1) {
+        //boxArray作成
+        for (i in 0.. ROW_NUMBER - 1) {
             boxArray.add(mutableListOf<Box>())
-            //boxArryの中にboxを作成
+            //boxArrayの中にboxを作成
             for (j in 0..ROW_NUMBER - 1) {
                 val box = Box(false, 0, false,false, i, j)
                 boxArray.get(i).add(box)
@@ -62,10 +62,10 @@ class MainActivity : AppCompatActivity(), ListItem.TapListener {
             Log.e("tappedNumber", tappedNumber.toString())
             Log.e("bomNumber", bomNumber.toString())
             if(tappedNumber==1){
-                Bom()
-                Open(box)
+                bom()
+                boxOpen(box)
             }else{
-                Open(box)
+                boxOpen(box)
             }
             if (tappedNumber == ROW_NUMBER * ROW_NUMBER - bomNumber) {
                 val intent = Intent(this, GameClear::class.java)
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity(), ListItem.TapListener {
         }
     }
     // bomのセット
-    fun Bom () {
+    fun bom () {
         bomNumber = Random.nextInt((ROW_NUMBER * ROW_NUMBER) / 4 - 1) + 1
 
         for (i in 0..bomNumber) {
@@ -142,7 +142,7 @@ class MainActivity : AppCompatActivity(), ListItem.TapListener {
         }
     }
 
-    fun Open (box: Box) {
+    fun boxOpen (box: Box) {
         var i = box.row
         var j = box.column
         //マスがあるか確認
@@ -163,15 +163,18 @@ class MainActivity : AppCompatActivity(), ListItem.TapListener {
             bomNumber.toString()
             return
         } else {
-            Open(boxArray.get(i - 1).get(j - 1))
-            Open(boxArray.get(i).get(j - 1))
-            Open(boxArray.get(i + 1).get(j - 1))
-            Open(boxArray.get(i - 1).get(j))
-            Open(boxArray.get(i + 1).get(j))
-            Open(boxArray.get(i - 1).get(j + 1))
-            Open(boxArray.get(i).get(j + 1))
-            Open(boxArray.get(i + 1).get(j + 1))
+            boxOpen(boxArray.get(i - 1).get(j - 1))
+            boxOpen(boxArray.get(i).get(j - 1))
+            boxOpen(boxArray.get(i + 1).get(j - 1))
+            boxOpen(boxArray.get(i - 1).get(j))
+            boxOpen(boxArray.get(i + 1).get(j))
+            boxOpen(boxArray.get(i - 1).get(j + 1))
+            boxOpen(boxArray.get(i).get(j + 1))
+            boxOpen(boxArray.get(i + 1).get(j + 1))
         }
+    }
+
+    override fun onBackPressed() {
     }
 
     override fun gameOver() {
