@@ -163,6 +163,7 @@ class MainActivity : AppCompatActivity(), ListItem.TapListener {
             bomNumber.toString()
             return
         } else {
+
             boxOpen(boxArray.get(i - 1).get(j - 1))
             boxOpen(boxArray.get(i).get(j - 1))
             boxOpen(boxArray.get(i + 1).get(j - 1))
