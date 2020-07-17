@@ -26,22 +26,62 @@ class MainActivity : AppCompatActivity(), ListItem.TapListener {
 
         findViewById<RecyclerView>(R.id.recycler_view).adapter = groupAdapter
 
-
+        //boxArry作成
         for (i in 0..ROW_NUMBER - 1) {
             boxArray.add(mutableListOf<Box>())
+            //boxArryの中にboxを作成
             for (j in 0..ROW_NUMBER - 1) {
-                val box = Box(false, 0, false)
+                val box = Box(false, 0, false,false, i, j)
                 boxArray.get(i).add(box)
             }
         }
+        var tappledBoxPosition = Random.nextInt(ROW_NUMBER * ROW_NUMBER)
+        while (!getBox(tappledBoxPosition).hasBom) {
+            tappledBoxPosition = Random.nextInt(ROW_NUMBER * ROW_NUMBER)
+        }
+        getBox(tappledBoxPosition).isTapped = true
+        Log.e("Box", getBox(tappledBoxPosition).number.toString())
 
+        var sec1 = Section()
+        for (i in 0 until boxArray.size) {
+            sec1.add(ListItem(boxArray.get(i), this))
+        }
+        groupAdapter.add(sec1)
+
+        Log.e("Box", "Box")
+
+        for (i in 0..ROW_NUMBER - 1) {
+            Log.e("Box", boxArray.get(i).toString())
+        }
+    }
+    // boxを開ける判定
+    override fun onTapped(box: Box) {
+        if (!box.isTapped) {
+            box.isTapped = true
+            tappedNumber++
+            Log.e("tappedNumber", tappedNumber.toString())
+            Log.e("bomNumber", bomNumber.toString())
+            if(tappedNumber==1){
+                Bom()
+                Open(box)
+            }else{
+                Open(box)
+            }
+            if (tappedNumber == ROW_NUMBER * ROW_NUMBER - bomNumber) {
+                val intent = Intent(this, GameClear::class.java)
+                startActivity(intent)
+            }
+        }
+    }
+    // bomのセット
+    fun Bom () {
         bomNumber = Random.nextInt((ROW_NUMBER * ROW_NUMBER) / 4 - 1) + 1
+
         for (i in 0..bomNumber) {
             val position = Random.nextInt(ROW_NUMBER * ROW_NUMBER)
             Log.e("Bom", position.toString())
             getBox(position).hasBom = true
         }
-
         for (i in 0..ROW_NUMBER - 1) {
             for (j in 0..ROW_NUMBER - 1) {
 
@@ -100,54 +140,45 @@ class MainActivity : AppCompatActivity(), ListItem.TapListener {
                 boxArray.get(i).get(j).number = boxNum
             }
         }
-
-        var tappledBoxPosition = Random.nextInt(ROW_NUMBER * ROW_NUMBER)
-        while (!getBox(tappledBoxPosition).hasBom) {
-            tappledBoxPosition = Random.nextInt(ROW_NUMBER * ROW_NUMBER)
-        }
-        getBox(tappledBoxPosition).isTapped = true
-        Log.e("Box", getBox(tappledBoxPosition).number.toString())
-
-
-        var sec1 = Section()
-        for (i in 0 until boxArray.size) {
-            sec1.add(ListItem(boxArray.get(i), this))
-        }
-        groupAdapter.add(sec1)
-
-
-        Log.e("Box", "Box")
-
-        for (i in 0..ROW_NUMBER - 1) {
-            Log.e("Box", boxArray.get(i).toString())
-        }
-
     }
 
-    override fun onTapped(box:Box) {
-        if (!box.isTapped) {
-            box.isTapped =true
-            tappedNumber++
-            Log.e("tappedNumber",tappedNumber.toString())
-            Log.e("bomNumber",bomNumber.toString())
-                if (tappedNumber == ROW_NUMBER * ROW_NUMBER - bomNumber) {
-                val intent = Intent(this, GameClear::class.java)
-                startActivity(intent)
-
-            }
+    fun Open (box: Box) {
+        var i = box.row
+        var j = box.column
+        //マスがあるか確認
+        if (i < 0 && i > ROW_NUMBER - 1 && j < 0 && j > ROW_NUMBER - 1) {
+            return
         }
-
-
+        //すでにタップされてるか確認
+        if (box.isTapped == true) {
+            return
+        }
+        //ボムがあるか確認
+        if (box.hasBom == true) {
+            gameOver()
+            return
+        }
+        //周りのボム数で仕分け
+        if (bomNumber > 0) {
+            bomNumber.toString()
+            return
+        } else {
+            Open(boxArray.get(i - 1).get(j - 1))
+            Open(boxArray.get(i).get(j - 1))
+            Open(boxArray.get(i + 1).get(j - 1))
+            Open(boxArray.get(i - 1).get(j))
+            Open(boxArray.get(i + 1).get(j))
+            Open(boxArray.get(i - 1).get(j + 1))
+            Open(boxArray.get(i).get(j + 1))
+            Open(boxArray.get(i + 1).get(j + 1))
+        }
     }
 
     override fun gameOver() {
         val intent = Intent(this, GameOver::class.java)
         startActivity(intent)
-
     }
-
-    fun getBox(position:Int) :Box{
-       return boxArray.get(position / ROW_NUMBER).get(position % ROW_NUMBER)
+    fun getBox(position: Int): Box {
+        return boxArray.get(position / ROW_NUMBER).get(position % ROW_NUMBER)
     }
-
 }

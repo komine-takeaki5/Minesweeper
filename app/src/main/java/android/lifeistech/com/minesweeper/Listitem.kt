@@ -86,7 +86,9 @@ class ListItem(val boxArray: MutableList<Box>, val lister :TapListener) : Bindab
     }
 
     interface TapListener {
-        fun onTapped(box:Box)
+
+        fun onTapped(box: Box)
         fun gameOver()
     }
+
 }
