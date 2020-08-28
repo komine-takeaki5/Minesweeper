@@ -1,6 +1,6 @@
 package android.lifeistech.com.minesweeper
 
-data class Box(var isTapped :Boolean,var number:Int,var hasBom :Boolean,var flag:Boolean,var row:Int ,
+data class Box(var isTapped :Boolean,var number:Int,var hasBom :Boolean,var row:Int ,
                 var column:Int){
 
     // flag

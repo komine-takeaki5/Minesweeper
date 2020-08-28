@@ -16,4 +16,6 @@ class GameClear : AppCompatActivity() {
         val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
     }
+    override fun onBackPressed() {
+    }
 }

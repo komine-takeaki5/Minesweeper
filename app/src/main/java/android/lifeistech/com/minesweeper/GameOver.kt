@@ -16,4 +16,6 @@ class GameOver : AppCompatActivity() {
         startActivity(intent)
 
     }
+    override fun onBackPressed() {
+    }
 }

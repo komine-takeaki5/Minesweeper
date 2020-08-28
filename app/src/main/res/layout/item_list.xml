@@ -20,8 +20,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/flag" />
+                    android:scaleType="fitXY" />
 
             <TextView
                     android:id="@+id/textView"
@@ -44,8 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/flag" />
+                    android:scaleType="fitXY" />
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -64,8 +62,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/blackgreen"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/flag" />
+                    android:scaleType="fitXY" />
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -81,8 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/flag" />
+                    android:scaleType="fitXY" />
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" android:id="@+id/textView4" android:textSize="30sp"
@@ -97,8 +93,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/flag" />
+                    android:scaleType="fitXY" />
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" android:id="@+id/textView5" android:textSize="30sp"
@@ -113,8 +108,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/flag" />
+                    android:scaleType="fitXY" />
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" android:id="@+id/textView6" android:textSize="30sp"
