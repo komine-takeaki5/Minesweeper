@@ -10,20 +10,20 @@
             android:layout_height="100dp"
     >
         <FrameLayout
-                android:id="@+id/frameLayout"
+                android:id="@+id/boxFrame1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
             <ImageView
-                    android:id="@+id/imageView"
+                    android:id="@+id/boxImage1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
                     android:scaleType="fitXY" />
 
             <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/boxText1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -33,13 +33,13 @@
         </FrameLayout>
 
         <FrameLayout
-                android:id="@+id/frameLayout2"
+                android:id="@+id/boxFrame2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
             <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/boxImage2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
@@ -47,17 +47,17 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/textView2"
+                    android:id="@+id/boxText2"
                     android:gravity="center" android:textSize="30sp"/>
         </FrameLayout>
         <FrameLayout
-                android:id="@+id/frameLayout3"
+                android:id="@+id/boxFrame3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1">
 
             <ImageView
-                    android:id="@+id/imageView3"
+                    android:id="@+id/boxImage3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -66,52 +66,64 @@
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/textView3"
+                    android:id="@+id/boxText3"
                     android:gravity="center" android:textSize="30sp"/>
         </FrameLayout>
         <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent" android:id="@+id/frameLayout4" android:layout_weight="1">
+                android:layout_height="match_parent"
+                android:id="@+id/boxFrame4"
+                android:layout_weight="1">
 
             <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/boxImage4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
                     android:scaleType="fitXY" />
             <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:id="@+id/textView4" android:textSize="30sp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/boxText4"
+                    android:textSize="30sp"
                     android:gravity="center"/>
         </FrameLayout>
         <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent" android:id="@+id/frameLayout5" android:layout_weight="1">
+                android:layout_height="match_parent"
+                android:id="@+id/boxFrame5"
+                android:layout_weight="1">
 
             <ImageView
-                    android:id="@+id/imageView5"
+                    android:id="@+id/boxImage5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
                     android:scaleType="fitXY" />
             <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:id="@+id/textView5" android:textSize="30sp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/boxText5"
+                    android:textSize="30sp"
                     android:gravity="center"/>
         </FrameLayout>
         <FrameLayout
                 android:layout_width="0dp"
-                android:layout_height="match_parent" android:layout_weight="1" android:id="@+id/frameLayout6">
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/boxFrame6">
 
             <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/boxImage6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
                     android:scaleType="fitXY" />
             <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:id="@+id/textView6" android:textSize="30sp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/boxText6"
+                    android:textSize="30sp"
                     android:gravity="center"/>
         </FrameLayout>
     </LinearLayout>

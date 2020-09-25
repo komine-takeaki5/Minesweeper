@@ -8,33 +8,36 @@ import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
+import kotlinx.android.synthetic.main.item_list.view.*
 import kotlin.random.Random
 
-class MainActivity : AppCompatActivity(), ListItem.TapListener {
+class MainActivity : AppCompatActivity() {
 
 
     val ROW_NUMBER = 6
     var bomNumber = 0
-    var tappedNumber = 0
+    var tappedNumber = 1
     var boxArray = mutableListOf<MutableList<Box>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+      createBoxArray()
+
         val groupAdapter = GroupAdapter<GroupieViewHolder>()
 
         findViewById<RecyclerView>(R.id.recycler_view).adapter = groupAdapter
 
         //boxArray作成
-        for (i in 0.. ROW_NUMBER - 1) {
+        /*for (i in 0.. ROW_NUMBER - 1) {
             boxArray.add(mutableListOf<Box>())
             //boxArrayの中にboxを作成
             for (j in 0..ROW_NUMBER - 1) {
-                val box = Box(false, 0, false,false, i, j)
+                val box = Box(false, 0, false, i, j,false)
                 boxArray.get(i).add(box)
             }
-        }
+        }*/
         /*var tappledBoxPosition = Random.nextInt(ROW_NUMBER * ROW_NUMBER)
         while (!getBox(tappledBoxPosition).hasBom) {
             tappledBoxPosition = Random.nextInt(ROW_NUMBER * ROW_NUMBER)
@@ -64,10 +67,10 @@ class MainActivity : AppCompatActivity(), ListItem.TapListener {
             Log.e("bomNumber", bomNumber.toString())
             if(tappedNumber==1){
                 bom(box)
-                boxOpen(box)
+                onOpenBox(row: Int, column: Int, recursive: Boolean)
 
             }else{
-                boxOpen(box)
+                onOpenBox(row: Int, column: Int, recursive: Boolean)
                 return
             }
             if (tappedNumber == ROW_NUMBER * ROW_NUMBER - bomNumber) {
@@ -76,11 +79,24 @@ class MainActivity : AppCompatActivity(), ListItem.TapListener {
             }
         }
     }
+    fun  createBoxArray() {
+        var boxArrayList = boxArray
 
-    override fun setOnLongClickListener(box: Box) {
-        TODO("Not yet implemented")
+        // 1行ごとに乱数を発生させて爆弾を生成
+        for (i in 0..(ROW_NUMBER - 1)) {
+            var array = mutableListOf<Box>()
+            val bomNum1 = Random.nextInt(ROW_NUMBER - 1)
+            val bomNum2 =Random.nextInt(ROW_NUMBER - 1)
 
+                for (j in 0..(ROW_NUMBER - 1)){
+
+
+                }
+            boxArrayList.add(array)
+        }
     }
+
+
 
 
     // bomのセット
@@ -154,19 +170,23 @@ class MainActivity : AppCompatActivity(), ListItem.TapListener {
         }
     }
 
-     fun boxOpen (box: Box) {
-        var i = box.row
-        var j = box.column
+     fun onOpenBox (row: Int, column: Int, recursive: Boolean) {
+         var i =row
+         var j = column
+
         //マスがあるか確認
         if (i < 0 && i > ROW_NUMBER - 1 && j < 0 && j > ROW_NUMBER - 1) {
             return
         }
-        //すでにタップされてるか確認
-        if (box.isTapped == true) {
+         //boxを取得
+         var box = boxArray.get(i).get(j)
+
+        //すでにタップされてる/flag
+        if (box.isTapped) {
             return
         }
         //ボムがあるか確認
-        if (box.hasBom == true) {
+        if (box.hasBom) {
             gameOver()
             return
         }
@@ -176,26 +196,118 @@ class MainActivity : AppCompatActivity(), ListItem.TapListener {
 
         } else {
 
-            boxOpen(boxArray.get(i - 1).get(j - 1))
-            boxOpen(boxArray.get(i).get(j - 1))
-            boxOpen(boxArray.get(i + 1).get(j - 1))
-            boxOpen(boxArray.get(i - 1).get(j))
-            boxOpen(boxArray.get(i + 1).get(j))
-            boxOpen(boxArray.get(i - 1).get(j + 1))
-            boxOpen(boxArray.get(i).get(j + 1))
-            boxOpen(boxArray.get(i + 1).get(j + 1))
+            onOpenBox(boxArray.get(i - 1).get(j - 1))
+            onOpenBox(boxArray.get(i).get(j - 1))
+            onOpenBox(boxArray.get(i + 1).get(j - 1))
+            onOpenBox(boxArray.get(i - 1).get(j))
+            onOpenBox(boxArray.get(i + 1).get(j))
+            onOpenBox(boxArray.get(i - 1).get(j + 1))
+            onOpenBox(boxArray.get(i).get(j + 1))
+            onOpenBox(boxArray.get(i + 1).get(j + 1))
 
         }
 
     }
+    /*override fun setOnLongClickListener(box: Box){
+        viewBinding.boxFrame1.setOnClickListener {
+            if (boxArray.get(0).hasBom) {
+                viewBinding.boxImage1.setImageResource(R.drawable.bom_image)
+                listner.gameOver()
+            } else {
+                viewBinding.boxText1.text = boxArray.get(0).number.toString()
+            }
+            listner.onTapped(boxArray.get(0))
+        }
+        viewBinding.boxFrame2.setOnClickListener {
+            if (boxArray.get(1).hasBom) {
+                viewBinding.boxImage2.setImageResource(R.drawable.bom_image)
+                listner.gameOver()
+            } else {
+                viewBinding.boxText2.text = boxArray.get(1).number.toString()
+            }
+            listner.onTapped(boxArray.get(1))
+        }
+        viewBinding.boxFrame3.setOnClickListener {
+            if (boxArray.get(2).hasBom) {
+                viewBinding.boxImage3.setImageResource(R.drawable.bom_image)
+                listner.gameOver()
+            } else {
+                viewBinding.boxText3.text = boxArray.get(2).number.toString()
+            }
+            listner.onTapped(boxArray.get(2))
+        }
+        viewBinding.boxFrame4.setOnClickListener {
+            if (boxArray.get(3).hasBom) {
+                viewBinding.boxImage4.setImageResource(R.drawable.bom_image)
+                listner.gameOver()
+            } else {
+                viewBinding.boxText4.text = boxArray.get(3).number.toString()
+            }
+            listner.onTapped(boxArray.get(3))
+        }
+        viewBinding.boxFrame5.setOnClickListener {
+            if (boxArray.get(4).hasBom) {
+                viewBinding.boxImage5.setImageResource(R.drawable.bom_image)
+                listner.gameOver()
+            } else {
+                viewBinding.boxText5.text = boxArray.get(4).number.toString()
+            }
+            listner.onTapped(boxArray.get(4))
+        }
+        viewBinding.boxFrame6.setOnClickListener {
+            if (boxArray.get(5).hasBom) {
+                viewBinding.boxImage6.setImageResource(R.drawable.bom_image)
+                listner.gameOver()
+            } else {
+                viewBinding.boxText6.text = boxArray.get(5).number.toString()
+            }
+            listner.onTapped(boxArray.get(5))
+        }
+
+
+    }*/
+
+    /*override fun setOnLongClickListener(box: Box) {
+        viewBinding.boxFrame1.setOnLongClickListener {
+
+            it.boxImage1.setImageResource(R.drawable.flag)
+        }
+        viewBinding.boxFrame2.setOnLongClickListener {
+            it.boxImage2.setImageResource(R.drawable.flag)
+        }
+        viewBinding.boxFrame3.setOnLongClickListener {
+            it.boxImage3.setImageResource(R.drawable.flag)
+        }
+        viewBinding.boxFrame4.setOnLongClickListener {
+
+            it.boxImage4.setImageResource(R.drawable.flag)
+        }
+        viewBinding.boxFrame5.setOnLongClickListener {
+
+            it.boxImage5.setImageResource(R.drawable.flag)
+        }
+        viewBinding.boxFrame6.setOnLongClickListener {
+
+            it.boxImage6.setImageResource(R.drawable.flag)
+        }
+
+
+    }*/
+
+
 
     override fun onBackPressed() {
     }
 
-    override fun gameOver() {
+    fun gameOver() {
         val intent = Intent(this, GameOver::class.java)
         startActivity(intent)
     }
+
+    fun setOnLongClickListener(box: Box) {
+        TODO("Not yet implemented")
+    }
+
     fun getBox(position: Int): Box {
         return boxArray.get(position / ROW_NUMBER).get(position % ROW_NUMBER)
     }

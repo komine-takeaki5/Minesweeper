@@ -8,18 +8,19 @@
         tools:context=".GameClear">
 
     <TextView
-            android:text="GameClear"
+            android:id="@+id/clearText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView5"
+            android:gravity="center"
+            android:text="GameClear"
             android:textColor="@android:color/holo_blue_dark"
             android:textSize="75dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:gravity="center" app:layout_constraintHorizontal_bias="0.38"
-            app:layout_constraintVertical_bias="0.415"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.38"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.415" />
     <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

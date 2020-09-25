@@ -13,85 +13,83 @@ class ListItem(val boxArray: MutableList<Box>, val listner :TapListener) : Binda
     override fun getLayout(): Int = R.layout.item_list
 
     override fun bind(viewBinding: ItemListBinding, position: Int) {
+        val boxImages = arrayOf(viewBinding.boxImage1, viewBinding.boxImage2, viewBinding.boxImage3,
+        viewBinding.boxImage4, viewBinding.boxImage5, viewBinding.boxImage6)
+        val boxTexts = arrayOf(viewBinding.boxText1, viewBinding.boxText2, viewBinding.boxText3,
+            viewBinding.boxText4, viewBinding.boxText5, viewBinding.boxText6)
 
-        viewBinding.frameLayout.setOnClickListener {
+        for(i in 0..boxArray.size-1){
+            val box =boxArray.get(i)
+            val imageView = boxImages[i]
+            val flag = box.hasFlag
+            if(flag){
+                imageView.setImageResource(R.drawable.flag)
+            }else{
+                imageView.setImageDrawable(null)
+            }
+        }
+        for(i in 0..boxArray.size -1){
+            val box =boxArray.get(i)
+            val textView = boxTexts[i]
+            val num = box.number
+              boxArray.get(i).number.toString()
+        }
+
+
+        /*viewBinding.boxFrame1.setOnClickListener {
             if (boxArray.get(0).hasBom) {
-                viewBinding.imageView.setImageResource(R.drawable.bom_image)
+                viewBinding.boxImage1.setImageResource(R.drawable.bom_image)
                 listner.gameOver()
             } else {
-                viewBinding.textView.text = boxArray.get(0).number.toString()
+                viewBinding.boxText1.text = boxArray.get(0).number
             }
             listner.onTapped(boxArray.get(0))
         }
-        viewBinding.frameLayout2.setOnClickListener {
+        viewBinding.boxFrame2.setOnClickListener {
             if (boxArray.get(1).hasBom) {
-                viewBinding.imageView2.setImageResource(R.drawable.bom_image)
+                viewBinding.boxImage2.setImageResource(R.drawable.bom_image)
                 listner.gameOver()
             } else {
-                viewBinding.textView2.text = boxArray.get(1).number.toString()
+                viewBinding.boxText2.text = boxArray.get(1).number.toString()
             }
             listner.onTapped(boxArray.get(1))
         }
-        viewBinding.frameLayout3.setOnClickListener {
+        viewBinding.boxFrame3.setOnClickListener {
             if (boxArray.get(2).hasBom) {
-                viewBinding.imageView3.setImageResource(R.drawable.bom_image)
+                viewBinding.boxImage3.setImageResource(R.drawable.bom_image)
                 listner.gameOver()
             } else {
-                viewBinding.textView3.text = boxArray.get(2).number.toString()
+                viewBinding.boxText3.text = boxArray.get(2).number.toString()
             }
             listner.onTapped(boxArray.get(2))
         }
-        viewBinding.frameLayout4.setOnClickListener {
+        viewBinding.boxFrame4.setOnClickListener {
             if (boxArray.get(3).hasBom) {
-                viewBinding.imageView4.setImageResource(R.drawable.bom_image)
+                viewBinding.boxImage4.setImageResource(R.drawable.bom_image)
                 listner.gameOver()
             } else {
-                viewBinding.textView4.text = boxArray.get(3).number.toString()
+                viewBinding.boxText4.text = boxArray.get(3).number.toString()
             }
             listner.onTapped(boxArray.get(3))
         }
-        viewBinding.frameLayout5.setOnClickListener {
+        viewBinding.boxFrame5.setOnClickListener {
             if (boxArray.get(4).hasBom) {
-                viewBinding.imageView5.setImageResource(R.drawable.bom_image)
+                viewBinding.boxImage5.setImageResource(R.drawable.bom_image)
                 listner.gameOver()
             } else {
-                viewBinding.textView5.text = boxArray.get(4).number.toString()
+                viewBinding.boxText5.text = boxArray.get(4).number.toString()
             }
             listner.onTapped(boxArray.get(4))
         }
-        viewBinding.frameLayout6.setOnClickListener {
+        viewBinding.boxFrame6.setOnClickListener {
             if (boxArray.get(5).hasBom) {
-                viewBinding.imageView6.setImageResource(R.drawable.bom_image)
+                viewBinding.boxImage6.setImageResource(R.drawable.bom_image)
                 listner.gameOver()
             } else {
-                viewBinding.textView6.text = boxArray.get(5).number.toString()
+                viewBinding.boxText6.text = boxArray.get(5).number.toString()
             }
             listner.onTapped(boxArray.get(5))
-        }
-
-        // OnLongClickListerner
-        viewBinding.frameLayout.setOnLongClickListener {
-
-           it.imageView.setImageResource(R.drawable.flag)
-        }
-        viewBinding.frameLayout2.setOnLongClickListener {
-            it.imageView2.setImageResource(R.drawable.flag)
-        }
-        viewBinding.frameLayout3.setOnLongClickListener {
-            it.imageView3.setImageResource(R.drawable.flag)
-        }
-        viewBinding.frameLayout4.setOnLongClickListener {
-
-            it.imageView4.setImageResource(R.drawable.flag)
-        }
-        viewBinding.frameLayout5.setOnLongClickListener {
-
-            it.imageView5.setImageResource(R.drawable.flag)
-        }
-        viewBinding.frameLayout6.setOnLongClickListener {
-
-            it.imageView6.setImageResource(R.drawable.flag)
-        }
+        }*/
 
 
 
@@ -102,17 +100,17 @@ class ListItem(val boxArray: MutableList<Box>, val listner :TapListener) : Binda
 
 
         if (boxArray.get(0).isTapped) {
-            viewBinding.textView.text = boxArray.get(0).number.toString()
-        } else if (boxArray.get(1).isTapped) {
-            viewBinding.textView.text = boxArray.get(1).number.toString()
-        } else if (boxArray.get(2).isTapped) {
-            viewBinding.textView.text = boxArray.get(2).number.toString()
-        } else if (boxArray.get(3).isTapped) {
-            viewBinding.textView.text = boxArray.get(3).number.toString()
+            viewBinding.boxText1.text = boxArray.get(0).number.toString()
+        }else if (boxArray.get(1).isTapped) {
+            viewBinding.boxText2.text = boxArray.get(1).number.toString()
+        }else if (boxArray.get(2).isTapped) {
+            viewBinding.boxText3.text = boxArray.get(2).number.toString()
+        }else if (boxArray.get(3).isTapped) {
+            viewBinding.boxText4.text = boxArray.get(3).number.toString()
         }else if (boxArray.get(4).isTapped) {
-            viewBinding.textView.text = boxArray.get(4).number.toString()
+            viewBinding.boxText5.text = boxArray.get(4).number.toString()
         }else if (boxArray.get(5).isTapped) {
-            viewBinding.textView.text = boxArray.get(5).number.toString()
+            viewBinding.boxText6.text = boxArray.get(5).number.toString()
         }
 
 
@@ -125,6 +123,7 @@ class ListItem(val boxArray: MutableList<Box>, val listner :TapListener) : Binda
         fun gameOver()
 
         fun setOnLongClickListener(box: Box)
+        fun createBoxArray()
     }
 
 }
