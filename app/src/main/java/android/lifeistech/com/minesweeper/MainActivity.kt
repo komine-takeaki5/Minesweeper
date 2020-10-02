@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         //}
     }
     // boxを開ける判定
-    override fun onTapped(box: Box) {
+    /*override fun onTapped(box: Box) {
         if (!box.isTapped) {
             box.isTapped = true
             tappedNumber++
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-    }
+    }*/
     fun  createBoxArray() {
         var boxArrayList = boxArray
 
@@ -91,16 +91,59 @@ class MainActivity : AppCompatActivity() {
                 for (j in 0..(ROW_NUMBER - 1)){
 
 
+                    if(bomNum1 ==j){
+                        box.hasBom = true
+                    }
+                    if (bomNum2 == j && j !== bomNum1 ){
+                        box.hasBom = true
+                    }
+
+
                 }
             boxArrayList.add(array)
         }
+        // 次に回りの爆弾の数を数える
+        for (n in 0..ROW_NUMBER - 1) {
+            for (m in 0..(ROW_NUMBER - 1)) {
+                var box =
+
+                // ①
+                checkBom(n - 1,m - 1 )
+                checkBom(n,m - 1)
+                checkBom(n + 1,m - 1)
+                checkBom(n - 1,m)
+                checkBom(n + 1,m)
+                checkBom(n - 1,m + 1)
+                checkBom(n,m + 1)
+                checkBom(n + 1,m + 1)
+
+
+            }
+        }
+    }
+    fun checkBom(row: Int, column: Int): Int {
+        // マスが存在するか確認
+        if (row < 0 || row > ROW_NUMBER - 1 || column < 0 || column > ROW_NUMBER - 1) {
+            return 0
+
+        } else if (boxArray[row][column].hasBom) {
+            return 1
+
+        } else {
+            return 0
+
+        }
+
     }
 
 
 
 
+
+
+
     // bomのセット
-     fun bom (box:Box) {
+    /* fun bom (box:Box) {
         bomNumber = Random.nextInt((ROW_NUMBER * ROW_NUMBER) / 3 - 1) + 1
         var i = box.row
         var j = box.column
@@ -168,7 +211,7 @@ class MainActivity : AppCompatActivity() {
                 boxArray.get(i).get(j).number = boxNum
             }
         }
-    }
+    }*/
 
      fun onOpenBox (row: Int, column: Int, recursive: Boolean) {
          var i =row
@@ -196,14 +239,14 @@ class MainActivity : AppCompatActivity() {
 
         } else {
 
-            onOpenBox(boxArray.get(i - 1).get(j - 1))
-            onOpenBox(boxArray.get(i).get(j - 1))
-            onOpenBox(boxArray.get(i + 1).get(j - 1))
-            onOpenBox(boxArray.get(i - 1).get(j))
-            onOpenBox(boxArray.get(i + 1).get(j))
-            onOpenBox(boxArray.get(i - 1).get(j + 1))
-            onOpenBox(boxArray.get(i).get(j + 1))
-            onOpenBox(boxArray.get(i + 1).get(j + 1))
+            onOpenBox(i - 1,j - 1 )
+            onOpenBox(i,j - 1)
+            onOpenBox(i + 1,j - 1)
+            onOpenBox(i - 1,j)
+            onOpenBox(i + 1,j)
+            onOpenBox(i - 1,j + 1)
+            onOpenBox(i,j + 1)
+            onOpenBox(i + 1,j + 1)
 
         }
 
