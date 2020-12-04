@@ -1,14 +1,10 @@
 package android.lifeistech.com.minesweeper
 
 import android.lifeistech.com.minesweeper.databinding.ItemListBinding
-import android.util.Log
-import android.widget.ImageView
 import com.xwray.groupie.databinding.BindableItem
-import androidx.databinding.BindingAdapter
-import kotlinx.android.synthetic.main.item_list.view.*
 
 
-class ListItem(val boxArray: MutableList<Box>, val listner :TapListener) : BindableItem<ItemListBinding>() {
+class ListItem(val boxArray: MutableList<Box>, val listner: MainActivity) : BindableItem<ItemListBinding>() {
 
     override fun getLayout(): Int = R.layout.item_list
 

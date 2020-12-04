@@ -4,11 +4,10 @@
         xmlns:tools="http://schemas.android.com/tools">
 
 
-
     <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-    >
+            android:layout_height="80dp">
+
         <FrameLayout
                 android:id="@+id/boxFrame1"
                 android:layout_width="0dp"
@@ -44,12 +43,15 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
                     android:scaleType="fitXY" />
+
             <TextView
+                    android:id="@+id/boxText2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/boxText2"
-                    android:gravity="center" android:textSize="30sp"/>
+                    android:gravity="center"
+                    android:textSize="30sp" />
         </FrameLayout>
+
         <FrameLayout
                 android:id="@+id/boxFrame3"
                 android:layout_width="0dp"
@@ -63,16 +65,19 @@
                     android:layout_weight="1"
                     android:background="@drawable/blackgreen"
                     android:scaleType="fitXY" />
+
             <TextView
+                    android:id="@+id/boxText3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/boxText3"
-                    android:gravity="center" android:textSize="30sp"/>
+                    android:gravity="center"
+                    android:textSize="30sp" />
         </FrameLayout>
+
         <FrameLayout
+                android:id="@+id/boxFrame4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/boxFrame4"
                 android:layout_weight="1">
 
             <ImageView
@@ -81,17 +86,19 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
                     android:scaleType="fitXY" />
+
             <TextView
+                    android:id="@+id/boxText4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/boxText4"
-                    android:textSize="30sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:textSize="30sp" />
         </FrameLayout>
+
         <FrameLayout
+                android:id="@+id/boxFrame5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:id="@+id/boxFrame5"
                 android:layout_weight="1">
 
             <ImageView
@@ -100,18 +107,20 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
                     android:scaleType="fitXY" />
+
             <TextView
+                    android:id="@+id/boxText5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/boxText5"
-                    android:textSize="30sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:textSize="30sp" />
         </FrameLayout>
+
         <FrameLayout
+                android:id="@+id/boxFrame6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:id="@+id/boxFrame6">
+                android:layout_weight="1">
 
             <ImageView
                     android:id="@+id/boxImage6"
@@ -119,12 +128,13 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/blackgreen"
                     android:scaleType="fitXY" />
+
             <TextView
+                    android:id="@+id/boxText6"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:id="@+id/boxText6"
-                    android:textSize="30sp"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    android:textSize="30sp" />
         </FrameLayout>
     </LinearLayout>
 </layout>

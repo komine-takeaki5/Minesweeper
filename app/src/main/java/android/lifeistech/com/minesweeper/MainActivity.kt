@@ -2,13 +2,11 @@ package android.lifeistech.com.minesweeper
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Section
-import kotlinx.android.synthetic.main.item_list.view.*
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     val ROW_NUMBER = 6
     var bomNumber = 0
-    var tappedNumber = 1
+    var tappedNumber = 2
     var boxArray = mutableListOf<MutableList<Box>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -89,6 +87,8 @@ class MainActivity : AppCompatActivity() {
             val bomNum2 =Random.nextInt(ROW_NUMBER - 1)
 
                 for (j in 0..(ROW_NUMBER - 1)){
+
+                    var box = Box()
 
 
                     if(bomNum1 ==j){
@@ -239,14 +239,14 @@ class MainActivity : AppCompatActivity() {
 
         } else {
 
-            onOpenBox(i - 1,j - 1 )
-            onOpenBox(i,j - 1)
-            onOpenBox(i + 1,j - 1)
-            onOpenBox(i - 1,j)
-            onOpenBox(i + 1,j)
-            onOpenBox(i - 1,j + 1)
-            onOpenBox(i,j + 1)
-            onOpenBox(i + 1,j + 1)
+            onOpenBox(i - 1,j - 1 , true)
+            onOpenBox(i,j - 1,true)
+            onOpenBox(i + 1,j - 1,true)
+            onOpenBox(i - 1,j,true)
+            onOpenBox(i + 1,j,true)
+            onOpenBox(i - 1,j + 1,true)
+            onOpenBox(i,j + 1,true)
+            onOpenBox(i + 1,j + 1,true)
 
         }
 
