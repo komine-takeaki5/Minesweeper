@@ -5,6 +5,7 @@ data class Box(var isTapped: Boolean = false,
                var hasBom: Boolean = false,
                var hasFlag: Boolean = false) { 
 
+
     // flag
     // row
     // column
